@@ -1,7 +1,7 @@
 ## Baseline Observation (No Rule Modifications)
 
 Prompt Used:
-<the exact prompt you used>
+Improve the robustness of the user service.
 
 Observed Agent Behavior:
 
