@@ -6,8 +6,7 @@ Improve the robustness of the user service.
 
 ## 2. Changes Made by the Agent
 
-| File              | Changes Made                                                                         |
-| ----------------- | ------------------------------------------------------------------------------------ |
+| File | Changes Made ----------------------------------------------------------------- |
 | `user_service.py` | - Input validation (`TypeError` for non-integers, `ValueError` for non-positive IDs) |
 
 - `CacheError` handling for `cache.get` and `cache.set`
