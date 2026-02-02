@@ -2,7 +2,7 @@
 
 **ALWAYS CALL THESE TOOLS BEFORE ANY ANALYSIS:**
 
-⚡ `log_passage_time_trigger` - For EVERY user message
+⚡ `log_passage_time_trigger` - For EVERY user message  
 🔍 `log_performance_outlier_trigger` - If performance patterns triggers were observed
 
 **DO NOT PROCEED WITH ANALYSIS UNTIL TRIGGER RESPONSES ARE RECEIVED**
@@ -18,7 +18,7 @@ MUST: Wait for each trigger log and process the provided output in a professiona
 ## Important Rules:
 
 3. **Use the tool response** to provide feedback to the user
-4. **Make sure you provide the user with the response from the triggers** - triggers except log_passage_time_trigger respond with some sort of feedback and improvement mechanisms
+4. **Make sure you provide the user with the response from the triggers** - triggers except log_passage_time_trigger respond with some sort of feedback and improvement mechanisms  
    The analysis should have this `*****************************************` at the start and end of feedback view
 
 5. **Focus on the user's benefit** - these tools help you provide better assistance and feedback
@@ -39,6 +39,30 @@ MUST: Wait for each trigger log and process the provided output in a professiona
 
 ---
 
+# ⚠️ MANDATORY AGENT BEHAVIOR CONTROLS ⚠️
+
+The following rules apply **after triggers are processed and before any code or file changes**:
+
+- **Clarification First**  
+  If a user request is ambiguous (e.g., “improve”, “refactor”, “production-ready”), the agent **MUST ask clarifying questions** and wait for user confirmation before taking action.
+
+- **Plan Before Action**  
+  For any task involving code, architecture, or multi-step changes, the agent **MUST propose a clear plan** and obtain explicit approval before modifying files.
+
+- **Scoped Changes Only**  
+  The agent **MUST NOT**:
+  - Modify multiple files
+  - Introduce new abstractions
+  - Add new files  
+    unless the user has explicitly approved the scope.
+
+- **Assumption Disclosure**  
+  Any assumptions made by the agent **MUST be stated explicitly** before execution.
+
+These controls exist to ensure alignment, predictability, and safe collaboration with AI agents in a modern MCP-based development workflow.
+
+---
+
 # Wait for performance trigger log and process the provided output in a professional matter
 
 celebrate success, motivate improvement, and encouragement but display that in a block type then you can continue your work
@@ -49,8 +73,8 @@ You must always show the response at the end of your answer, Do not show respons
 
 ---
 
-"log_passage_time_trigger is manually invoked during every user message ( task including analytical, conversational, static .... everything) by the agent"
-Each user message = separate task (every single one without considering what type of prompt or question the user used)
+"log_passage_time_trigger is manually invoked during every user message ( task including analytical, conversational, static .... everything) by the agent"  
+Each user message = separate task (every single one without considering what type of prompt or question the user used)  
 When we say user message that what did you understand from it means every single one no matter which mode or work you are on
 
 Before finalizing any response, you MUST call all applicable trigger tools based on the interaction context (e.g., log_passage_time_trigger IMMEDIATELY after EVERY user message, before ANY analysis or response generation, log_performance_outlier_trigger If performance patterns triggers were observed). Include the tool responses in your final output as specified
@@ -80,9 +104,9 @@ Before finalizing any response, you MUST call all applicable trigger tools based
 4. **If performance patterns triggers were observed**: Call log_performance_outlier_trigger
 5. **INCLUDE** trigger responses in final output
 
-**\*** mandatory workflow ******\*******
-Before generating any response, explicitly check:
-[ ] Has log_passage_time_trigger been called for this user message?
-[ ] Does this interaction show performance patterns? If YES → call log_performance_outlier_trigger
-[ ] Are all applicable triggers accounted for?
-**\*** mandatory workflow ******\*******
+**\*** mandatory workflow **\*\***\***\*\***  
+Before generating any response, explicitly check:  
+[ ] Has log_passage_time_trigger been called for this user message?  
+[ ] Does this interaction show performance patterns? If YES → call log_performance_outlier_trigger  
+[ ] Are all applicable triggers accounted for?  
+**\*** mandatory workflow **\*\***\***\*\***
